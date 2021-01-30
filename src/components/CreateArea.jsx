@@ -16,6 +16,12 @@ function CreateArea(props) {
     });
   }
 
+  function submitNote(event) {
+    props.onAdd(note);
+    event.preventDefault();
+    setNote({ title: "", content: "" });
+  }
+
   return (
     <div>
       <form>
@@ -32,13 +38,7 @@ function CreateArea(props) {
           placeholder="Take a note..."
           rows="3"
         />
-        <button
-          onClick={() => {
-            PaymentResponse.AddNote();
-          }}
-        >
-          Add
-        </button>
+        <button onClick={submitNote}>Add</button>
       </form>
     </div>
   );
